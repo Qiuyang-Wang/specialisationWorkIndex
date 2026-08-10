@@ -26,7 +26,7 @@
 <header>
     <!-- !!!!! -->
     <!--    change this to your preferred online name  -->
-    <h1>System Design Document</h1>
+    <h1>Tension Balance System Design Document</h1>
 </header>
 
 <div class="mainNavContainer">
@@ -38,27 +38,46 @@
 
     <main>
         <section id="scenario-section">
-            <h3 class="firstSectionHeading">Scenario</h3>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto asperiores deleniti, dolore, fugiat harum ipsum magni natus nemo nobis quos, totam veniam. Assumenda eaque labore minus praesentium quidem sapiente?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto asperiores deleniti, dolore, fugiat harum ipsum magni natus nemo nobis quos, totam veniam. Assumenda eaque labore minus praesentium quidem sapiente?</p>
+            <h3 class="firstSectionHeading">Design scenario analysis and response</h3>
+            <p> Most browser-based musical instruments are designed for use by a single person. Scenario Two, however, presents a completely different set of requirements: the instrument must enable two people to perform together on the same computer. I wish to divide the performance process between the two players; the focus here is not merely on multiple people using different input devices simultaneously, but on ensuring that their collaboration genuinely alters the piece's outcome.</p>
+            <p>The aim of ‘Tension Balance’ is for two players to use different input methods to jointly perform a piece of electronic music, establishing the rhythm and controlling the energy together, whilst using visual and auditory feedback to judge when to build tension and when to release it. The entire process must ultimately produce a musical effect that cannot be directly achieved through solo performance.</p>
+            <p>I hope this design embodies ‘shared control’, ‘cooperation’ and ‘shared responsibility’. Each player has clearly defined capabilities, but some elements cannot be accomplished alone. This division of labour compels both players to observe one another and negotiate whether to continue building up energy or prepare to release it. Players do not need to understand music theory to play; whilst the two have different levels of control, these limitations are not intended to create difficulties, but rather to make cooperation the true core of the gameplay.</p>
         </section>
 
         <section>
-            <h3>Response</h3>
+            <h3>Project Overview</h3>
+            <p>Tension Balance is a browser-based electronic synthesiser designed for two local players. Player A uses the A, S, D and F keys to create a rhythm, with each key corresponding to a different drum beat or electronic sound; the speed at which the keys are pressed affects the shared energy. Player B uses the mouse to alter the timbre and stabilise the energy within the target range. I have divided the performance process into several main stages: Build, Stabilise, Release and Result. A round lasts between thirty and sixty seconds, during which both players must push the energy into the target range. Once the energy reaches 75%–90%, they must maintain a stable state for approximately 2–3 seconds. The system then detects continuous rhythmic input and opens the Release Window. The mouse player completes the final release when the contracting ring reaches the appropriate position. Based on stability and timing, the system generates one of three outcomes: ‘Perfect Sync’, ‘Controlled Release’ or ‘Overload’ and plays the corresponding collaborative melody, ensuring that the scoring goes beyond mere numbers.</p>
+            <p>The keyboard and mouse are assigned to different players, each controlling distinct parameters; should one player stop the music, the composition loses its integrity. The final result is determined by the combined performance of both players, with different outcomes making the quality of this collaboration tangible.</p>
         </section>
 
         <section>
-            <h3>Framing</h3>
+            <h3>Project Framing</h3>
+            <p>I have positioned Tension Balance as an electronic rhythm instrument with a light gamified structure, rather than a full-fledged music production programme. The core concepts of the project include cooperative authorship, tension and release, shared responsibility, and performance as play. Users can manipulate the music but cannot fully predict the final sound; this uncertainty is something I have deliberately retained.</p>
+            <p>Visually, I will utilise a light-coloured background, a fine grid, multi-coloured lines and a central circular ‘energy arena’ to emphasise the feel of a futuristic electronic instrument. The interface will not feature complex characters or narratives; instead, it will establish cues and rhythm through clear changes in system state. As energy increases, the central core will expand. When the state is unstable, the waveforms and outlines will exhibit more pronounced tremors. </p>
+            <p>The sound library relies primarily on pre-recorded audio, limited to around eight to twelve samples, including drum beats, electronic sounds and a closing melody. Technically, the project utilises HTML, CSS, JavaScript and the Web Audio API, combined with keyboard and mouse events, and employs `performance.now()` for time calculations. </p>
+            <p>Spatial Input is the primary extended technique. The mouse’s X and Y coordinates are mapped to sound parameters: the horizontal axis corresponds to panning, the vertical axis to filtering, and distance from the target controls stability. Date and time are used as auxiliary elements to determine whether the rhythm is stable, and to control the release window and the duration of a round. To keep the scope of development manageable, I will not include online multiplayer, an account system, microphone recording, AI music generation, MIDI, complex DAW editing or 3D graphics. These features would significantly increase the technical burden.</p>
         </section>
 
         <section>
             <h3>Interaction design analysis</h3>
-            <h4>Example 1</h4>
-            <h4>Example 2</h4>
-            <h4>Example 3</h4>
-            <h4>Example 4</h4>
-            <h4>Example 5</h4>
+            <h4>
+                <a href="https://mdn.github.io/webaudio-examples/violent-theremin/">Violent Theremin</a>
+            </h4>
+            <p>The first is the official MDN ‘Violent Theremin’, based on the Web Audio API and Canvas, which allows the player to control synth-like sounds using the mouse or arrow keys, with the on-screen colours changing in response to pitch and volume, depending on the mouse position. The analysis focuses on the mapping of spatial input to sound—specifically, how mouse movements are converted into sound changes in real time. Its value lies in helping to define the design of Player B: horizontal movement controls the pan, vertical movement controls the filter, and distance controls stability.</p>
+            <h4>
+                <a href="https://www.beatcombo.com/">BeatCombo</a>
+            </h4>
+            <p>The research focus of BeatCombo is on timing and real-time feedback. It utilises seven vertical tracks along which notes move downwards; players use the S, D, F, Space, J, K and L keys to input commands in time with the music. This structure allows players to anticipate the timing of upcoming actions in advance. I will apply this approach to the ‘Release Window’, using a contracting ring and audio cues to indicate the release moment in advance.</p>
+            <h4>
+                <a href="https://intersymmetric.xyz/">Inter-symmetric</a>
+            </h4>
+            <p>Another point of reference is Sequencer 01 from Inter-symmetric, a browser-based multiplayer music system. Different users see the same interface; when one participant adjusts a knob, button or grid, the changes are synchronised across everyone’s screens. This shared feedback allows participants to perceive others’ actions, making it the case study that most closely aligns with Scenario 2. Inspired by this, I decided to have Tension Balance constantly display a central shared energy meter.</p>
+            <h4>
+                <a href="https://mohayonao.github.io/cubic-sequencer/">CUBIC SEQUENCER</a>
+            </h4>
+            <p>Finally, there is the CUBIC SEQUENCER created by mohayonao, which treats an 8×8×8 cube as a sequencing container. The interface centrally displays controls such as BPM, Axis, Pitch Shift, Loop Length, Note Length, Scene and Matrix. The analysis focused on information design—specifically, how to quickly extract rhythmic information from the spatial structure—which reminded me to design the display to show only the information the player needs at any given moment. Influenced by this, I retained only one track for each of the four sounds (A, S, D and F), leaving a visual pulse each time a key is pressed to reduce the unnecessary information load during performance.</p>
         </section>
-        <a href="https://au.miro.com/app/board/u3jVOf5_6AQ=/?share_link_id=26769912878"> Miro</a>
+        <a href="https://au.miro.com/app/board/u3jVOf5_6AQ=/?share_link_id=26769912878"> Miro board</a>
 
     </main>
 
