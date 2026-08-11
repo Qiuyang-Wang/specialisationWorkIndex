@@ -1,7 +1,7 @@
 /*!!!!!*/
 /*add in your own font imports here*/
 /*remember to update them in the rest of the CSS : eg the body selector*/
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
 /*!!!!!*/
 /*change out, and/or add colours to the colour scheme*/
@@ -17,8 +17,8 @@
 /*remember to update the colours here too to reflect the above changes*/
 @media (prefers-color-scheme: dark) {
     :root{
-        --colour-1: #f0f6f0;
-        --colour-2: #222323;
+        --colour-1: #e8e8e8;
+        --colour-2: #222222;
     }
 }
 
@@ -26,7 +26,7 @@
 body {
     background-color: var(--colour-2);
     color: var(--colour-1);
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.5;
     padding: 1rem;
     display: flex;
@@ -85,6 +85,11 @@ section {
 }
 section > * + * {
     margin-block-start: 1rem;
+}
+
+h1 {
+    white-space: nowrap;
+    font-size: 2rem;
 }
 
 h3 {
