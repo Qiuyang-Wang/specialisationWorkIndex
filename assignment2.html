@@ -28,35 +28,50 @@
   <main>
     <section>
       <h3>Spatial Input Interaction</h3>
-      <p>My first area of exploration was Spatial Input Interaction. This section focuses on how two players can jointly influence the same sound system and Shared State through different input methods. Player A uses the A, S, D, and F keys to trigger four sets of short sounds, while Player B alters their spatial position and timbre via a two-dimensional Spatial Field. The horizontal position is mapped to stereo panning, whilst the vertical position controls the filter frequency. The distance between the input position and the moving target point also generates a ‘stability’ value, which in turn influences the ‘roughness’ of the sound and the visual state of the ‘Sync Point’. The three prototypes maintain essentially the same sound mapping, moving target, page layout and ‘Shared State’, varying only the method by which Player B inputs spatial position. This allows us to explore the differences between hovering, single clicks and drag-and-drop. This area also utilises the project’s ‘extended technique’. `mousemove` is used to read continuously changing mouse coordinates and convert two-dimensional movement within the browser into sound parameters. </p>
+      <p>My first area of exploration is Spatial Input Interaction. It focuses on how Player A and Player B can jointly influence the same sound system through different inputs. Player A uses the A, S, D and F keys to trigger short sounds, whilst Player B uses the Spatial Field to alter stereo panning, filter frequency and stability. The three prototypes maintain essentially the same sound mapping, moving targets and shared state, altering only Player B’s method of input. This approach was inspired by the MDN Violent Theremin, which maps mouse movements to sound parameters in real time. MDN’s spatial audio / PannerNode example further provides a reference for the concept of ‘spatial position corresponding to sound position’. </p>
     </section>
 
     <section>
-      <a href="https://qiuyang-wang-exploration-one.github.io/SyncPoint-1/" target="_blank">Prototype 1A: Hover Control</a>
-      <p>Prototype 1A uses continuous hovering as Player B’s spatial input. Once the mouse enters the Spatial Field, `mousemove` continuously reads the current position. Consequently, the player can alter the sound without performing any additional actions. This choice directly embodies the ‘mouse tracking’ extended technique. The decision to retain a fixed-size Sync Point and display changes solely through colour and status text was made to ensure that the primary design variable of this prototype remained the input method, whilst avoiding simultaneous changes to the feedback structure. It also supports the project’s multiplayer objective, as Player B’s continuous movement constantly alters the sounds triggered by Player A, allowing both players’ actions to influence the same sonic outcome.</p>
+      <a href="https://qiuyang-wang-exploration-one.github.io/SyncPoint-1/" target="_blank">Prototype 1: Hover Control</a>
+      <p>Prototype 1 utilises continuous hovering. Once the mouse enters the Spatial Field, `mousemove` continuously reads the X/Y coordinates, allowing Player B to alter the sound without clicking. This version directly follows the real-time mouse tracking approach of the MDN Violent Theremin and is also used to test how continuous input affects the sounds triggered by Player A. The Sync Point remains fixed, with only the colour and status text changing, so that the primary variables are centred on the input method.</p>
     </section>
 
     <section>
       <a href="https://qiuyang-wang-exploration-two.github.io/SyncPoint2/" target="_blank">Prototype 2: Click Position Input</a>
-      <p>Prototype 1B replaces spatial input with a single click. Moving the mouse within the Spatial Field does not alter the current sound; new X/Y coordinates are only recorded when a click occurs. The red input point remains at the position of the most recent click until the player selects new coordinates. This design converts continuous positional changes into a series of discrete decisions, allowing Player B to first select a spatial state and then observe how the Shared State and sound change as the moving target passes that position. The audio mapping remains the same as in 1A. Retaining these shared conditions allows the focus of exploration to remain on the rhythm of input and the method of positional updates. For a multi-player sound system, this choice also alters the timing of Player B’s participation in sound changes. Player A can continue to trigger the rhythm, whilst Player B’s position remains active until the next active click. </p>
+      <p>Prototype 2 utilises a single click. The system only records a new position upon clicking, and the red dot remains in that position until the next input. This transforms the task of continuous mouse tracking into a single-point selection by the user within the space, allowing Player B to first set a state and then observe the subsequent changes in the moving target, the Shared State and the sound. The sound mapping remains consistent with 1A; therefore, the primary comparison is the timing and method of input. </p>
     </section>
 
     <section>
       <a href="https://qiuyang-wang-exploration-three.github.io/SyncPoint-3/" target="_blank">Prototype 3: Click and Drag</a>
-      <p>Prototype 1C utilises click-and-drag, combining continuous mouse tracking with active selection within a single control. Player B must first click and hold the red input point; only then will mousemove continuously update its position. Upon releasing the mouse, the red dot remains at its final coordinates. This design ensures that continuous changes only occur during the explicit dragging phase, rather than generating continuous input whenever the mouse moves, as in Prototype 1A. The code utilises `mousedown`, `mousemove` and `mouseup` to distinguish between the three operational states—start, continuous and end—whilst retaining the offset between the click position and the centre of the red dot, thereby preventing the input point from suddenly jumping to the centre of the mouse cursor when dragging begins. The mapping of sound parameters to `stability` remains consistent with the first two prototypes; consequently, this version primarily explores how players actively capture and adjust an existing state. In line with the project’s goal of multiplayer interaction, this input method allows Player B to modify Player A’s sound in stages, retaining the previous setting between two drags, whilst `Shared State` continues to reflect the relationship between the input position and the target of movement.</p>
+      <p>Prototype 3 utilises click-and-drag. Player B can only continuously update the position whilst holding down the red dot; upon releasing, the current state is retained. This version draws on the drag structure from the classroom example—mousedown → mousemove → mouseup—combining continuous tracking with active manipulation. It was used to explore how a player, when explicitly ‘grabbing and moving’ a state, could continuously influence the shared audio outcome for both players. </p>
     </section>
 
     <section>
-      <a href="https://qiuyang-wang-exploration-four.github.io/SyncPoint-4/" target="_blank">Prototype 4: Click and Drag</a>
-    </section>
-    <section>
-      <a href="https://qiuyang-wang-exploration-five.github.io/SyncPoint-5/" target="_blank">Prototype 4: Click and Drag</a>
-    </section>
-    <section>
-      <a href="https://qiuyang-wang-exploration-six.github.io/SyncPoint-6/" target="_blank">Prototype 4: Click and Drag</a>
+      <h3>Shared State Visual Feedback</h3>
+      <p>
+        My second area of exploration was Shared State Visual Feedback. All three prototypes utilised the same hover input, sound mapping, movement targets and stability calculations, with only the visual representation of the central Sync Point altered. This direction builds upon my earlier exploration of shared state in Assignment 1 and was also inspired by Inter-symmetric Sequencer 01. This multi-player music system allows different participants to observe changes to the same shared interface. The real-time visual and audio feedback in BeatCombo also provided a reference for real-time state representation.
+      </p>
     </section>
 
-    <a href="" target="_blank">
+    <section>
+      <a href="https://qiuyang-wang-exploration-four.github.io/SyncPoint-4/" target="_blank">Prototype 4: Expanding Core</a>
+      <p>
+        Prototype 4 uses the size of a circle to represent stability. The closer Player B gets to the target, the larger the central red circle becomes; as the distance increases, it shrinks. This design stems from my earlier concept of an expanding central core, which directly translates numerical values into size. As the centre of the circle and the display area remain fixed, the visual changes are concentrated primarily on the size itself, allowing us to test whether players can quickly discern the direction of change in the current state.
+      </p>
+
+    </section>
+    <section>
+      <a href="https://qiuyang-wang-exploration-five.github.io/SyncPoint-5/" target="_blank">Prototype 5: Circular Progress Ring</a>
+      <p>
+        Prototype 5 utilises a Circular Progress Ring. As stability increases, the ring fills in a clockwise direction whilst the pointer rotates; when the value decreases, both retreat. This version borrows the visual structure of a common progress indicator, converting stability into a proportional change within a fixed range. It is used to observe whether players can, through the ring’s completion level, more directly understand what is required to maintain the shared state.
+      </p>
+    </section>
+    <section>
+      <a href="https://qiuyang-wang-exploration-six.github.io/SyncPoint-6/" target="_blank">Prototype 6: Waveform / Pulse Feedback</a>
+      <p>Prototype 2C transforms stability into a dynamic waveform. When stability is low, the amplitude of the waveform and its subtle fluctuations increase; as the value rises, the waveform gradually stabilises. This approach builds on my earlier idea of representing ‘unstable states’ as tremors in the waveform, whilst linking visual movement to the roughness of the sound. It is used to test whether players can quickly grasp the current state through dynamic characteristics, rather than size or progress proportion.</p>
+    </section>
+
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=cTYy0b7NF0S01L2yS1Exa5qINZp6o_VHi1BLm68flH1UMUdEU0ZWOTUyVDY0VlhJNUo5MTQ1OFdDWC4u" target="_blank">
       Peer User Testing Form
     </a>
 
