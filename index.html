@@ -48,7 +48,39 @@
                 <p>
                     <a href="https://au.miro.com/app/board/u3jVOf5_6AQ=/?share_link_id=998592740694"> https://au.miro.com/app/board/u3jVOf5_6AQ=/?share_link_id=998592740694</a>
                 </p>
+                <h3>Sync Point Final Link</h3>
+                <p>
+
+                </p>
             </section>
+
+            <section>
+                <h3>1. Project Overview and Response to the Scenario</h3>
+                <p>My project, Sync Point, is a browser-based synthesiser operated jointly by two players on a single computer, corresponding to Scenario 2: Multiplayer Synthesiser. Player A is responsible for creating rhythms and melodies, whilst Player B controls the left and right channels and timbres via their mouse position. The coordination of both players’ actions determines the state of the central Sync Point. This structure directly responds to the scenario’s requirement for a ‘local cooperative instrument’, demonstrating ‘shared control’ through the actual performance mechanics. </p>
+            </section>
+
+            <section>
+                <h3>2. Core Interactive Features</h3>
+                <p>Player A uses the A, S, D and F keys to trigger C Major, D Major, F Major and G Major. Each input generates an upward-moving light beam, and the most recent six keystrokes are recorded on four rhythm lines. The system determines whether the rhythm is stable based on the time intervals between these six inputs. The average interval must be maintained between 180 and 1,600 ms, and the overall deviation must be kept within 28 per cent of the average value.
+
+                </p>
+                <p>Player B follows the continuously moving target in the Spatial Field on the right. The mouse position is displayed as a blue dot. The closer the player gets to the target, the higher the stability, the lower the roughness and noise in the sound, and the smoother the waveform becomes. The progress ring only begins to fill when Player A’s rhythm is stable and Player B’s stability reaches 0.7 or above. After both players have maintained stability continuously for 8 seconds, the interface displays “Maintain Stability!!” and the ring begins to flash. If stability is maintained for the next 2 seconds, a yellow “Perfect” is awarded; if either player loses control, a grey “Try Again” is displayed.</p>
+            </section>
+
+            <section>
+                <h3>3. Extended Technique: mousemove</h3>
+                <p>I have chosen mousemove as the primary control method for Player B. The system continuously reads the X and Y coordinates of the mouse within the Spatial Field. The X-axis is mapped to stereo panning, moving from the left channel to the right channel. The Y-axis controls the low-pass filter frequency, ranging from approximately 12,000 Hz to 500 Hz. The system simultaneously calculates the distance between the mouse and the target, and converts the result into a visual representation of stability.</p>
+                <p>This continuous form of input is well-suited to this project, as Player B’s actions can alter the sound. As the mouse moves, the player will directly hear changes in panning, brightness and noise, whilst also being able to visually observe the current level of stability via the waveform. The code adjusts panning, the filter, roughness and noise based on stability; consequently, mousemove can be used simultaneously for sound control and state determination.</p>
+            </section>
+
+            <section>
+                <h3>4. Design System</h3>
+                <p>The visual system is based on a light grey background, white interactive areas and dark grey text. Player A uses red (#d82e2f), whilst Player B uses blue (#183b97). These two colours mark the control ranges of the two players respectively and are consistent throughout the Guide. The font used is Open Sans. The desktop version adopts a three-column layout: left, centre and right. Player A and Player B are positioned on either side, with the Sync Point in the centre, ensuring that the shared status remains the visual focal point at all times.</p>
+                <p>The interface’s primary feedback comes from rhythm dots, light beams, the waveform, the progress ring and the final results screen. Upon first entering the page, the Guide opens automatically, explaining each player’s respective tasks and success criteria. Buttons have ‘active’ and ‘focus’ states, and on narrower screens, the layout switches to a single-column format. The system supports `prefers-reduced-motion` to minimise certain animation effects.
+                </p>
+                <p>These design choices reduce the learning curve for first-time users whilst ensuring consistency in controls, feedback and results. The three-column layout also reinforces the division of roles between players. Players can quickly recognise which side belongs to whom. Visual and audio feedback follow the same logic, allowing players to assess the current status through both sight and sound. The Guide remains visible on the interface, so players can refer to it at any time should they forget the rules.</p>
+            </section>
+
         </main>
 
         <!-- this is an empty element which helps with spacing -->
