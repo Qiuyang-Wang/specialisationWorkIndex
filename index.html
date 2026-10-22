@@ -63,6 +63,13 @@
 
             <section>
                 <h3>2. Core Interactive Features</h3>
+                <p>
+                    <a href="https://tibersynth.cc/play"> TiberSynth</a>
+                </p>
+                <p>
+                    <a href="https://hammyasf.github.io/beat-maker.html?utm_source=chatgpt.com#room=slkujp"> Live Beat Maker</a>
+                </p>
+                
                 <p>Player A uses the A, S, D and F keys to trigger C Major, D Major, F Major and G Major. Each input generates an upward-moving light beam, and the most recent six keystrokes are recorded on four rhythm lines. The system determines whether the rhythm is stable based on the time intervals between these six inputs. The average interval must be maintained between 180 and 1,600 ms, and the overall deviation must be kept within 28 per cent of the average value.
 
                 </p>
@@ -73,6 +80,18 @@
                 <h3>3. Extended Technique: mousemove</h3>
                 <p>I have chosen mousemove as the primary control method for Player B. The system continuously reads the X and Y coordinates of the mouse within the Spatial Field. The X-axis is mapped to stereo panning, moving from the left channel to the right channel. The Y-axis controls the low-pass filter frequency, ranging from approximately 12,000 Hz to 500 Hz. The system simultaneously calculates the distance between the mouse and the target, and converts the result into a visual representation of stability.</p>
                 <p>This continuous form of input is well-suited to this project, as Player B’s actions can alter the sound. As the mouse moves, the player will directly hear changes in panning, brightness and noise, whilst also being able to visually observe the current level of stability via the waveform. The code adjusts panning, the filter, roughness and noise based on stability; consequently, mousemove can be used simultaneously for sound control and state determination.</p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event"> Mousemove event</a>
+                </p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Simple_synth"> Simple synth keyboard</a>
+                </p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API"> Web Audio API</a>
+                </p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode"> StereoPannerNode</a>
+                </p>
             </section>
 
             <section>
@@ -81,6 +100,12 @@
                 <p>The interface’s primary feedback comes from rhythm dots, light beams, the waveform, the progress ring and the final results screen. Upon first entering the page, the Guide opens automatically, explaining each player’s respective tasks and success criteria. Buttons have ‘active’ and ‘focus’ states, and on narrower screens, the layout switches to a single-column format. The system supports `prefers-reduced-motion` to minimise certain animation effects.
                 </p>
                 <p>These design choices reduce the learning curve for first-time users whilst ensuring consistency in controls, feedback and results. The three-column layout also reinforces the division of roles between players. Players can quickly recognise which side belongs to whom. Visual and audio feedback follow the same logic, allowing players to assess the current status through both sight and sound. The Guide remains visible on the interface, so players can refer to it at any time should they forget the rules.</p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout"> CSS Grid Layout</a>
+                </p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion"> prefers-reduced-motion</a>
+                </p>
             </section>
 
         </main>
